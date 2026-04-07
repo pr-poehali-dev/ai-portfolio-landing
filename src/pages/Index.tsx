@@ -114,111 +114,131 @@ export default function Index() {
   return (
     <div className="min-h-screen" style={{ background: "#f9f6f2", fontFamily: "'Golos Text', sans-serif" }}>
 
-      {/* NAV */}
-      <nav style={{ background: "rgba(249,246,242,0.92)", borderBottom: "1px solid #e8e2d9" }}
-        className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md">
+      {/* NAV — тёмный для hero */}
+      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md"
+        style={{ background: "rgba(18,14,30,0.75)", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <span className="text-sm tracking-[0.15em] uppercase font-medium" style={{ color: "#2a2320" }}>
-            Дарья Римарович
+          <span className="text-sm tracking-[0.2em] uppercase font-medium" style={{ color: "rgba(255,255,255,0.5)" }}>
+            DR
           </span>
+          <p className="hidden md:block text-xs tracking-[0.25em] uppercase absolute left-1/2 -translate-x-1/2"
+            style={{ color: "rgba(255,255,255,0.45)" }}>
+            AI Content Creator · с 2022 года
+          </p>
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((l) => (
-              <a key={l.href} href={l.href} className="nav-link text-sm tracking-wide" style={{ color: "#6b6360" }}>
+              <a key={l.href} href={l.href} className="nav-link text-sm tracking-wide"
+                style={{ color: "rgba(255,255,255,0.6)" }}>
                 {l.label}
               </a>
             ))}
           </div>
-          <button className="md:hidden" style={{ color: "#2a2320" }} onClick={() => setMenuOpen(!menuOpen)}>
+          <a href="#contacts"
+            className="hidden md:block px-5 py-2 text-sm font-medium tracking-wide transition-all"
+            style={{ background: "#d946a8", color: "#fff", borderRadius: "999px" }}
+            onMouseEnter={e => (e.currentTarget.style.background = "#c4389a")}
+            onMouseLeave={e => (e.currentTarget.style.background = "#d946a8")}>
+            Написать
+          </a>
+          <button className="md:hidden" style={{ color: "rgba(255,255,255,0.7)" }} onClick={() => setMenuOpen(!menuOpen)}>
             <Icon name={menuOpen ? "X" : "Menu"} size={22} />
           </button>
         </div>
         {menuOpen && (
-          <div className="md:hidden px-6 py-4 flex flex-col gap-4" style={{ borderTop: "1px solid #e8e2d9" }}>
+          <div className="md:hidden px-6 py-4 flex flex-col gap-4"
+            style={{ borderTop: "1px solid rgba(255,255,255,0.08)", background: "rgba(18,14,30,0.97)" }}>
             {navLinks.map((l) => (
               <a key={l.href} href={l.href} onClick={() => setMenuOpen(false)}
-                className="text-sm tracking-wide" style={{ color: "#2a2320" }}>{l.label}</a>
+                className="text-sm tracking-wide" style={{ color: "rgba(255,255,255,0.7)" }}>{l.label}</a>
             ))}
           </div>
         )}
       </nav>
 
-      {/* HERO */}
-      <section id="about" className="pt-28 pb-20 px-6 max-w-6xl mx-auto">
+      {/* HERO — тёмный полноэкранный */}
+      <section id="about" className="relative flex flex-col items-center justify-center text-center overflow-hidden"
+        style={{
+          minHeight: "100vh",
+          background: "radial-gradient(ellipse at 60% 40%, #2d1a4a 0%, #1a1028 45%, #0e0a1c 100%)",
+          paddingTop: "80px",
+        }}>
 
-        {/* Имя крупно над всем */}
-        <div style={{ opacity: 0, animation: "fade-up 0.7s ease-out 0.1s forwards" }} className="mb-10">
-          <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: "#9b9390" }}>
+        {/* фоновое свечение */}
+        <div className="absolute inset-0 pointer-events-none" style={{
+          background: "radial-gradient(ellipse 60% 50% at 50% 30%, rgba(180,60,200,0.18) 0%, transparent 70%)"
+        }} />
+
+        <div className="relative z-10 px-6 max-w-5xl mx-auto w-full">
+          <p className="text-xs tracking-[0.3em] uppercase mb-8"
+            style={{ color: "rgba(255,255,255,0.4)", opacity: 0, animation: "fade-in 0.7s ease-out 0.1s forwards" }}>
             AI Content Creator · с 2022 года
           </p>
-          <h1 style={{ fontFamily: "'Cormorant', serif", fontWeight: 300, color: "#2a2320", fontSize: "clamp(3rem, 8vw, 7rem)", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
-            РИМАРОВИЧ<br /><em style={{ fontWeight: 400 }}>ДАРЬЯ</em>
+
+          <h1 style={{
+            fontFamily: "'Cormorant', serif",
+            fontWeight: 400,
+            lineHeight: 0.88,
+            fontSize: "clamp(4.5rem, 14vw, 13rem)",
+            opacity: 0,
+            animation: "fade-up 0.9s ease-out 0.2s forwards",
+          }}>
+            <span style={{ color: "#d98ae8", display: "block" }}>Дарья</span>
+            <span style={{ color: "rgba(255,255,255,0.92)", display: "block" }}>Римарович</span>
           </h1>
+
+          <p className="mx-auto mt-10 mb-10 text-lg md:text-xl leading-relaxed"
+            style={{
+              color: "rgba(255,255,255,0.75)",
+              maxWidth: "640px",
+              opacity: 0,
+              animation: "fade-up 0.8s ease-out 0.45s forwards",
+            }}>
+            Создаю визуальные миры с помощью нейросетей —<br className="hidden md:block" />
+            от анимации и иллюстраций до нарративного дизайна
+          </p>
+
+          <div className="flex items-center justify-center gap-4 flex-wrap"
+            style={{ opacity: 0, animation: "fade-up 0.8s ease-out 0.6s forwards" }}>
+            <a href="#gallery"
+              className="px-8 py-3.5 text-sm font-medium tracking-wide transition-all"
+              style={{ background: "#d946a8", color: "#fff", borderRadius: "999px" }}
+              onMouseEnter={e => (e.currentTarget.style.background = "#c4389a")}
+              onMouseLeave={e => (e.currentTarget.style.background = "#d946a8")}>
+              Смотреть работы
+            </a>
+            <a href="#experience"
+              className="px-8 py-3.5 text-sm font-medium tracking-wide transition-all"
+              style={{ background: "rgba(255,255,255,0.12)", color: "#fff", borderRadius: "999px", border: "1px solid rgba(255,255,255,0.18)" }}
+              onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.2)")}
+              onMouseLeave={e => (e.currentTarget.style.background = "rgba(255,255,255,0.12)")}>
+              Обо мне
+            </a>
+          </div>
+
+          {/* Статистика */}
+          <div className="mt-20 grid grid-cols-3 gap-0 max-w-xl mx-auto"
+            style={{ opacity: 0, animation: "fade-up 0.8s ease-out 0.75s forwards", borderTop: "1px solid rgba(255,255,255,0.12)" }}>
+            {stats.map((s, i) => (
+              <div key={i} className="pt-6 pb-2 text-center"
+                style={{ borderRight: i < 2 ? "1px solid rgba(255,255,255,0.12)" : "none" }}>
+                <p style={{ fontFamily: "'Cormorant', serif", fontSize: "2.5rem", color: "#d98ae8", lineHeight: 1 }}>{s.value}</p>
+                <p className="text-[10px] tracking-[0.2em] uppercase mt-2" style={{ color: "rgba(255,255,255,0.4)" }}>{s.label}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-10 items-start">
-
-          {/* LEFT — квадратное фото + статистика */}
-          <div style={{ opacity: 0, animation: "fade-in 0.9s ease-out 0.3s forwards" }}>
-            <div className="aspect-square overflow-hidden relative group cursor-pointer"
-              style={{ background: "#ede8e2" }}
-              onClick={() => photoInputRef.current?.click()}>
-              {photoSrc ? (
-                <img src={photoSrc} alt="Дарья Римарович" className="w-full h-full object-cover" />
-              ) : (
-                <div className="w-full h-full flex flex-col items-center justify-center gap-3" style={{ color: "#b8b2ac" }}>
-                  <Icon name="Camera" size={32} />
-                  <p className="text-xs tracking-[0.15em] uppercase">Добавить фото</p>
-                </div>
-              )}
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
-                style={{ background: "rgba(42,35,32,0.35)" }}>
-                <div className="flex flex-col items-center gap-2" style={{ color: "#f9f6f2" }}>
-                  <Icon name="Camera" size={24} />
-                  <p className="text-xs tracking-wide">{photoSrc ? "Изменить фото" : "Загрузить фото"}</p>
-                </div>
-              </div>
-              <input ref={photoInputRef} type="file" accept="image/*" className="hidden" onChange={handlePhotoUpload} />
-            </div>
-            <div className="grid grid-cols-3" style={{ border: "1px solid #e8e2d9", borderTop: "none" }}>
-              {stats.map((s, i) => (
-                <div key={i} className="py-4 px-3 text-center"
-                  style={{ borderRight: i < 2 ? "1px solid #e8e2d9" : "none" }}>
-                  <p className="text-xl md:text-2xl" style={{ fontFamily: "'Cormorant', serif", color: "#2a2320" }}>{s.value}</p>
-                  <p className="text-[10px] tracking-[0.12em] uppercase mt-0.5" style={{ color: "#9b9390" }}>{s.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* RIGHT — текст + кнопки */}
-          <div style={{ opacity: 0, animation: "fade-up 0.8s ease-out 0.4s forwards" }}>
-            <p className="leading-relaxed mb-8" style={{ color: "#2a2320", fontSize: "1.05rem" }}>
-              Работаю в сфере ИИ-генерации с 2022 года. За это время реализовала более <strong>80 проектов</strong> — от карточек товаров до работы над полнометражным анимационным мультфильмом.
-            </p>
-            <div className="flex gap-4 flex-wrap">
-              <a href="#gallery"
-                className="px-7 py-3 text-sm tracking-wide transition-colors"
-                style={{ background: "#2a2320", color: "#f9f6f2" }}
-                onMouseEnter={e => (e.currentTarget.style.background = "#3d3530")}
-                onMouseLeave={e => (e.currentTarget.style.background = "#2a2320")}>
-                Смотреть работы
-              </a>
-              <a href="#contacts"
-                className="px-7 py-3 text-sm tracking-wide transition-all"
-                style={{ border: "1px solid #2a2320", color: "#2a2320" }}
-                onMouseEnter={e => { e.currentTarget.style.background = "#2a2320"; e.currentTarget.style.color = "#f9f6f2"; }}
-                onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#2a2320"; }}>
-                Связаться
-              </a>
-            </div>
-          </div>
+        {/* стрелка вниз */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          style={{ color: "rgba(255,255,255,0.25)", animation: "fade-in 1s ease-out 1.2s forwards", opacity: 0 }}>
+          <Icon name="ChevronDown" size={24} />
         </div>
       </section>
 
       <div className="max-w-6xl mx-auto px-6"><div style={{ borderTop: "1px solid #e8e2d9" }} /></div>
 
       {/* EXPERIENCE */}
-      <section className="py-24 px-6 max-w-6xl mx-auto">
+      <section id="experience" className="py-24 px-6 max-w-6xl mx-auto">
         <div className="grid md:grid-cols-[1fr_2fr] gap-16">
           <div className="reveal">
             <p className="text-xs tracking-[0.25em] uppercase mb-4" style={{ color: "#9b9390" }}>Опыт</p>
