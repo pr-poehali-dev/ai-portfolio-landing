@@ -169,8 +169,8 @@ export default function Index() {
         }} />
 
         <div className="relative z-10 px-6 max-w-5xl mx-auto w-full">
-          <p className="text-xs tracking-[0.3em] uppercase mb-8"
-            style={{ color: "rgba(255,255,255,0.4)", opacity: 0, animation: "fade-in 0.7s ease-out 0.1s forwards" }}>
+
+          <p className="text-xs tracking-[0.3em] uppercase mb-8" style={{ color: "rgba(255,255,255,0.4)" }}>
             AI Content Creator · с 2022 года
           </p>
 
@@ -179,26 +179,23 @@ export default function Index() {
             fontWeight: 400,
             lineHeight: 0.88,
             fontSize: "clamp(4.5rem, 14vw, 13rem)",
-            opacity: 0,
-            animation: "fade-up 0.9s ease-out 0.2s forwards",
           }}>
             <span style={{ color: "#d98ae8", display: "block" }}>Дарья</span>
             <span style={{ color: "rgba(255,255,255,0.92)", display: "block" }}>Римарович</span>
           </h1>
 
-          <p className="mx-auto mt-10 mb-10 text-lg md:text-xl leading-relaxed"
-            style={{
-              color: "rgba(255,255,255,0.75)",
-              maxWidth: "640px",
-              opacity: 0,
-              animation: "fade-up 0.8s ease-out 0.45s forwards",
-            }}>
+          <p className="mx-auto mt-10 mb-3 text-lg md:text-xl leading-relaxed"
+            style={{ color: "rgba(255,255,255,0.75)", maxWidth: "640px" }}>
             Создаю визуальные миры с помощью нейросетей —<br className="hidden md:block" />
             от анимации и иллюстраций до нарративного дизайна
           </p>
 
-          <div className="flex items-center justify-center gap-4 flex-wrap"
-            style={{ opacity: 0, animation: "fade-up 0.8s ease-out 0.6s forwards" }}>
+          <p className="mx-auto mb-10 text-sm leading-relaxed"
+            style={{ color: "rgba(255,255,255,0.4)", maxWidth: "540px" }}>
+            Более 80 проектов · Blockchain Sports · OTUS · Литературная премия Дубай 2025
+          </p>
+
+          <div className="flex items-center justify-center gap-4 flex-wrap mb-16">
             <a href="#gallery"
               className="px-8 py-3.5 text-sm font-medium tracking-wide transition-all"
               style={{ background: "#d946a8", color: "#fff", borderRadius: "999px" }}
@@ -216,8 +213,8 @@ export default function Index() {
           </div>
 
           {/* Статистика */}
-          <div className="mt-20 grid grid-cols-3 gap-0 max-w-xl mx-auto"
-            style={{ opacity: 0, animation: "fade-up 0.8s ease-out 0.75s forwards", borderTop: "1px solid rgba(255,255,255,0.12)" }}>
+          <div className="grid grid-cols-3 gap-0 max-w-xl mx-auto"
+            style={{ borderTop: "1px solid rgba(255,255,255,0.12)" }}>
             {stats.map((s, i) => (
               <div key={i} className="pt-6 pb-2 text-center"
                 style={{ borderRight: i < 2 ? "1px solid rgba(255,255,255,0.12)" : "none" }}>
@@ -229,8 +226,7 @@ export default function Index() {
         </div>
 
         {/* стрелка вниз */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          style={{ color: "rgba(255,255,255,0.25)", animation: "fade-in 1s ease-out 1.2s forwards", opacity: 0 }}>
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2" style={{ color: "rgba(255,255,255,0.25)" }}>
           <Icon name="ChevronDown" size={24} />
         </div>
       </section>
