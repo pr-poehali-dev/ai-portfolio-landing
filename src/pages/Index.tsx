@@ -144,7 +144,7 @@ export default function Index() {
 
       {/* HERO */}
       <section id="about" className="pt-28 pb-20 px-6 max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-16 items-start">
+        <div className="grid md:grid-cols-[5fr_7fr] gap-12 items-start">
 
           {/* LEFT — фото + статистика */}
           <div style={{ opacity: 0, animation: "fade-in 0.9s ease-out 0.2s forwards" }}>
@@ -179,18 +179,30 @@ export default function Index() {
             </div>
           </div>
 
-          {/* RIGHT — имя + текст */}
+          {/* RIGHT — имя + вводный текст + пункты опыта */}
           <div style={{ opacity: 0, animation: "fade-up 0.8s ease-out 0.3s forwards" }}>
-            <p className="text-xs tracking-[0.25em] uppercase mb-5" style={{ color: "#9b9390" }}>
+            <p className="text-xs tracking-[0.25em] uppercase mb-4" style={{ color: "#9b9390" }}>
               AI Content Creator · с 2022 года
             </p>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl leading-none mb-8"
+            <h1 className="text-5xl md:text-6xl leading-none mb-6"
               style={{ fontFamily: "'Cormorant', serif", fontWeight: 400, color: "#2a2320" }}>
               Дарья<br /><em>Римарович</em>
             </h1>
-            <p className="leading-relaxed mb-10" style={{ color: "#2a2320", fontSize: "1.05rem" }}>
+
+            <p className="leading-relaxed mb-8" style={{ color: "#2a2320", fontSize: "1.05rem" }}>
               Работаю в сфере ИИ-генерации с 2022 года. За это время реализовала более <strong>80 проектов</strong> — от карточек товаров до работы над полнометражным анимационным мультфильмом.
             </p>
+
+            <ul className="space-y-0 mb-9">
+              {aboutPoints.map((point, i) => (
+                <li key={i} className="flex gap-4 py-4 text-sm leading-relaxed"
+                  style={{ borderTop: "1px solid #e8e2d9", color: "#6b6360" }}>
+                  <span className="shrink-0 text-xs tracking-widest pt-0.5" style={{ color: "#c8c2bc" }}>0{i + 1}</span>
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+
             <div className="flex gap-4 flex-wrap">
               <a href="#gallery"
                 className="px-7 py-3 text-sm tracking-wide transition-colors"
@@ -208,30 +220,6 @@ export default function Index() {
               </a>
             </div>
           </div>
-        </div>
-      </section>
-
-      <div className="max-w-6xl mx-auto px-6"><div style={{ borderTop: "1px solid #e8e2d9" }} /></div>
-
-      {/* EXPERIENCE */}
-      <section className="py-24 px-6 max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-[1fr_2fr] gap-16">
-          <div className="reveal">
-            <p className="text-xs tracking-[0.25em] uppercase mb-4" style={{ color: "#9b9390" }}>Опыт</p>
-            <h2 className="text-4xl md:text-5xl leading-tight"
-              style={{ fontFamily: "'Cormorant', serif", fontWeight: 400, color: "#2a2320" }}>
-              Чем<br /><em>занимаюсь</em>
-            </h2>
-          </div>
-          <ul className="reveal space-y-0" style={{ transitionDelay: "0.1s" }}>
-            {aboutPoints.map((point, i) => (
-              <li key={i} className="flex gap-4 py-6 text-sm leading-relaxed"
-                style={{ borderBottom: "1px solid #e8e2d9", color: "#6b6360" }}>
-                <span className="shrink-0 text-xs tracking-widest pt-0.5" style={{ color: "#b8b2ac" }}>0{i + 1}</span>
-                <span>{point}</span>
-              </li>
-            ))}
-          </ul>
         </div>
       </section>
 
