@@ -10,6 +10,9 @@ const tools = [
   "NanoBanana",
   "ChatGPT",
   "ComfyUI",
+  "Photoshop",
+  "CapCut",
+  "Grok",
 ];
 
 const galleryItems = [
@@ -145,13 +148,12 @@ export default function Index() {
         )}
       </nav>
 
-      {/* HERO + ABOUT */}
-      <section id="about" className="pt-28 pb-24 px-6 max-w-6xl mx-auto">
+      {/* HERO — первый экран: фото + вводный текст */}
+      <section id="about" className="pt-28 pb-20 px-6 max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-16 items-start">
 
-          {/* LEFT — фото */}
+          {/* LEFT — фото + статистика */}
           <div className="relative" style={{ opacity: 0, animation: "fade-in 0.9s ease-out 0.2s forwards" }}>
-            {/* Фото-зона */}
             <div
               className="aspect-[3/4] overflow-hidden relative group cursor-pointer"
               style={{ background: "#ede8e2" }}
@@ -166,7 +168,6 @@ export default function Index() {
                   <p className="text-xs tracking-[0.15em] uppercase">Добавить фото</p>
                 </div>
               )}
-              {/* overlay при hover */}
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
                 style={{ background: "rgba(42,35,32,0.35)" }}>
                 <div className="flex flex-col items-center gap-2" style={{ color: "#f9f6f2" }}>
@@ -176,12 +177,9 @@ export default function Index() {
               </div>
               <input ref={photoInputRef} type="file" accept="image/*" className="hidden" onChange={handlePhotoUpload} />
             </div>
-
-            {/* Статистика под фото */}
             <div className="grid grid-cols-3 gap-0 mt-0" style={{ border: "1px solid #e8e2d9", borderTop: "none" }}>
               {stats.map((s, i) => (
-                <div key={i}
-                  className="py-4 px-3 text-center"
+                <div key={i} className="py-4 px-3 text-center"
                   style={{ borderRight: i < 2 ? "1px solid #e8e2d9" : "none" }}>
                   <p className="text-xl md:text-2xl" style={{ fontFamily: "'Cormorant', serif", color: "#2a2320" }}>{s.value}</p>
                   <p className="text-[10px] tracking-[0.12em] uppercase mt-0.5" style={{ color: "#9b9390" }}>{s.label}</p>
@@ -190,7 +188,7 @@ export default function Index() {
             </div>
           </div>
 
-          {/* RIGHT — текст */}
+          {/* RIGHT — имя + вводный абзац */}
           <div style={{ opacity: 0, animation: "fade-up 0.8s ease-out 0.3s forwards" }}>
             <p className="text-xs tracking-[0.25em] uppercase mb-5" style={{ color: "#9b9390" }}>
               AI Content Creator · с 2022 года
@@ -199,20 +197,9 @@ export default function Index() {
               style={{ fontFamily: "'Cormorant', serif", fontWeight: 400, color: "#2a2320" }}>
               Дарья<br /><em>Римарович</em>
             </h1>
-
-            <p className="text-base leading-relaxed mb-8" style={{ color: "#2a2320" }}>
+            <p className="text-base leading-relaxed mb-10" style={{ color: "#2a2320", fontSize: "1.05rem" }}>
               Работаю в сфере ИИ-генерации с 2022 года. За это время реализовала более <strong>80 проектов</strong> — от карточек товаров до работы над полнометражным анимационным мультфильмом.
             </p>
-
-            <ul className="space-y-4 mb-10">
-              {aboutPoints.map((point, i) => (
-                <li key={i} className="flex gap-3 text-sm leading-relaxed" style={{ color: "#6b6360" }}>
-                  <span className="mt-1.5 shrink-0 w-1 h-1 rounded-full" style={{ background: "#b8b2ac" }} />
-                  {point}
-                </li>
-              ))}
-            </ul>
-
             <div className="flex gap-4 flex-wrap">
               <a href="#gallery"
                 className="px-7 py-3 text-sm tracking-wide transition-colors"
@@ -235,6 +222,30 @@ export default function Index() {
 
       <div className="max-w-6xl mx-auto px-6"><div style={{ borderTop: "1px solid #e8e2d9" }} /></div>
 
+      {/* ABOUT — второй блок: опыт */}
+      <section className="py-24 px-6 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-[1fr_2fr] gap-16">
+          <div className="reveal">
+            <p className="text-xs tracking-[0.25em] uppercase mb-4" style={{ color: "#9b9390" }}>Опыт</p>
+            <h2 className="text-4xl md:text-5xl leading-tight"
+              style={{ fontFamily: "'Cormorant', serif", fontWeight: 400, color: "#2a2320" }}>
+              Чем<br /><em>занимаюсь</em>
+            </h2>
+          </div>
+          <ul className="reveal space-y-6" style={{ transitionDelay: "0.1s" }}>
+            {aboutPoints.map((point, i) => (
+              <li key={i} className="flex gap-4 pb-6 text-sm leading-relaxed"
+                style={{ borderBottom: i < aboutPoints.length - 1 ? "1px solid #e8e2d9" : "none", color: "#6b6360" }}>
+                <span className="shrink-0 text-xs tracking-widest pt-0.5" style={{ color: "#b8b2ac" }}>0{i + 1}</span>
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <div className="max-w-6xl mx-auto px-6"><div style={{ borderTop: "1px solid #e8e2d9" }} /></div>
+
       {/* TOOLS */}
       <section id="tools" className="py-24 px-6 max-w-6xl mx-auto">
         <div className="reveal mb-14">
@@ -252,9 +263,9 @@ export default function Index() {
         </div>
         <div className="reveal p-6" style={{ border: "1px solid #e8e2d9", background: "#f4f0ec", transitionDelay: "0.2s" }}>
           <p className="text-xs tracking-[0.2em] uppercase mb-2" style={{ color: "#9b9390" }}>Основной агрегатор</p>
-          <p className="text-lg mb-2" style={{ fontFamily: "'Cormorant', serif", color: "#2a2320" }}>Higgsfield</p>
+          <p className="text-lg mb-3" style={{ fontFamily: "'Cormorant', serif", color: "#2a2320" }}>Higgsfield</p>
           <p className="text-sm leading-relaxed" style={{ color: "#6b6360" }}>
-            В своей работе сейчас чаще всего использую именно этот агрегатор — он объединяет ключевые ИИ-инструменты
+            В своей работе сейчас чаще всего использую именно Higgsfield — этот агрегатор объединяет ключевые ИИ-инструменты
             в едином рабочем пространстве и позволяет эффективно выстраивать весь производственный процесс.
           </p>
         </div>
