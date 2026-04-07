@@ -144,11 +144,22 @@ export default function Index() {
 
       {/* HERO */}
       <section id="about" className="pt-28 pb-20 px-6 max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-16 items-start">
 
-          {/* LEFT — фото + статистика */}
-          <div style={{ opacity: 0, animation: "fade-in 0.9s ease-out 0.2s forwards" }}>
-            <div className="aspect-[3/4] overflow-hidden relative group cursor-pointer"
+        {/* Имя крупно над всем */}
+        <div style={{ opacity: 0, animation: "fade-up 0.7s ease-out 0.1s forwards" }} className="mb-10">
+          <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ color: "#9b9390" }}>
+            AI Content Creator · с 2022 года
+          </p>
+          <h1 style={{ fontFamily: "'Cormorant', serif", fontWeight: 300, color: "#2a2320", fontSize: "clamp(3rem, 8vw, 7rem)", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
+            РИМАРОВИЧ<br /><em style={{ fontWeight: 400 }}>ДАРЬЯ</em>
+          </h1>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-10 items-start">
+
+          {/* LEFT — квадратное фото + статистика */}
+          <div style={{ opacity: 0, animation: "fade-in 0.9s ease-out 0.3s forwards" }}>
+            <div className="aspect-square overflow-hidden relative group cursor-pointer"
               style={{ background: "#ede8e2" }}
               onClick={() => photoInputRef.current?.click()}>
               {photoSrc ? (
@@ -179,16 +190,9 @@ export default function Index() {
             </div>
           </div>
 
-          {/* RIGHT — имя + текст */}
-          <div style={{ opacity: 0, animation: "fade-up 0.8s ease-out 0.3s forwards" }}>
-            <p className="text-xs tracking-[0.25em] uppercase mb-5" style={{ color: "#9b9390" }}>
-              AI Content Creator · с 2022 года
-            </p>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl leading-none mb-8"
-              style={{ fontFamily: "'Cormorant', serif", fontWeight: 400, color: "#2a2320" }}>
-              Дарья<br /><em>Римарович</em>
-            </h1>
-            <p className="leading-relaxed mb-10" style={{ color: "#2a2320", fontSize: "1.05rem" }}>
+          {/* RIGHT — текст + кнопки */}
+          <div style={{ opacity: 0, animation: "fade-up 0.8s ease-out 0.4s forwards" }}>
+            <p className="leading-relaxed mb-8" style={{ color: "#2a2320", fontSize: "1.05rem" }}>
               Работаю в сфере ИИ-генерации с 2022 года. За это время реализовала более <strong>80 проектов</strong> — от карточек товаров до работы над полнометражным анимационным мультфильмом.
             </p>
             <div className="flex gap-4 flex-wrap">
